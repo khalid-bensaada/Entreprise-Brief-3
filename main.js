@@ -13,9 +13,10 @@ let roomFive = document.getElementById("roomFive");
 let roomsx = document.getElementById("roomsx");
 let fullName = document.getElementById("fullName");
 let email = document.getElementById("email");
-let Photo = document.getElementById("Photo");
+let Photo = document.getElementById("Photo"); 
 let phone = document.getElementById("phone");
 let roles = document.getElementById("roles");
 let dateOne = document.getElementById("dateOne");
 let dateTwo = document.getElementById("dateTwo");
 let company = document.getElementById("company");
+
