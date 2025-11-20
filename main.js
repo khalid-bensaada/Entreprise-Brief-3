@@ -44,24 +44,22 @@ function saveforamtions(){
 
     localStorage.setItem("userData", JSON.stringify(user));
     alert("Data saved successfully!");
+    cleareforma();
 }
 
-function loadData() {
-    const saved = localStorage.getItem("userData");
-    if (!saved) return;
+function cleareforma(){
 
-    const data = JSON.parse(saved);
+    fullName.value ="";
+    email.value ="";
+    Photo.value ="";
+    phone.value ="";
+    roles.value ="";
+    dateOne.value ="";
+    dateTwo.value ="";
+    company.value ="";
 
-    fullName.value = data.fullName || "";
-    email.value = data.email || "";
-    Photo.value = data.photo || "";
-    phone.value = data.phone || "";
-    roles.value = data.roles || "manager";
-    dateOne.value = data.dateOne || "";
-    dateTwo.value = data.dateTwo || "";
-    company.value = data.company || "";
 }
-
-loadData();
-
-btnTree.addEventListener("click", saveforamtions);
+btnTree.addEventListener("click",() =>{
+    saveforamtions();
+    cleareforma();
+});
