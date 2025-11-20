@@ -1,27 +1,27 @@
-let btnOne = document.getElementById("btnOne");
-let btnTwo = document.getElementById("btnTwo");
-let btnTree = document.getElementById("btnTree");
-let forma = document.getElementById("forma");
-let experiences = document.getElementById("exper");
-let image = document.getElementById("image"); 
-let roomOne = document.getElementById("roomOne");
-let roomTwo = document.getElementById("roomTwo");
-let roomTree = document.getElementById("roomTree");
-let kolwar = document.getElementById("kolwar");
-let roomFor = document.getElementById("roomFor");
-let roomFive = document.getElementById("roomFive");
-let roomsx = document.getElementById("roomsx");
-let fullName = document.getElementById("fullName");
-let email = document.getElementById("email");
-let Photo = document.getElementById("Photo");
-let phone = document.getElementById("phone");
-let roles = document.getElementById("roles");
-let dateOne = document.getElementById("dateOne");
-let dateTwo = document.getElementById("dateTwo");
-let company = document.getElementById("company");
+const btnOne = document.getElementById("btnOne");
+const btnTwo = document.getElementById("btnTwo");
+const btnTree = document.getElementById("btnTree");
+const forma = document.getElementById("forma");
+const experiences = document.getElementById("exper");
+const image = document.getElementById("image"); 
+const roomOne = document.getElementById("roomOne");
+const roomTwo = document.getElementById("roomTwo");
+const roomTree = document.getElementById("roomTree");
+const kolwar = document.getElementById("kolwar");
+const roomFor = document.getElementById("roomFor");
+const roomFive = document.getElementById("roomFive");
+const roomsx = document.getElementById("roomsx");
+const fullName = document.getElementById("fullName");
+const email = document.getElementById("email");
+const Photo = document.getElementById("Photo");
+const phone = document.getElementById("phone");
+const roles = document.getElementById("roles");
+const dateOne = document.getElementById("dateOne");
+const dateTwo = document.getElementById("dateTwo");
+const oldcompany = document.getElementById("company");
 
 
-let formations = [];
+let personnes = [];
 
 btnOne.addEventListener('click' , function(){
     forma.classList.toggle("hidden")
@@ -38,7 +38,7 @@ function saveforamtions(){
         roles : roles.value,
         dateOne : dateOne.value,
         dateTwo : dateTwo.value,
-        company : company.value
+        company : oldcompany.value
 
     };
 
@@ -46,6 +46,9 @@ function saveforamtions(){
     alert("Data saved successfully!");
     cleareforma();
 }
+
+const formations = { fullName ,email ,Photo ,phone ,roles ,dateOne ,dateTwo ,oldcompany};
+
 
 function cleareforma(){
 
@@ -56,10 +59,15 @@ function cleareforma(){
     roles.value ="";
     dateOne.value ="";
     dateTwo.value ="";
-    company.value ="";
+    oldcompany.value ="";
 
 }
 btnTree.addEventListener("click",() =>{
+    const nome = fullName.value.tirm();
+    const mail = email.value;
+    const picture = Photo.value;
+    const number = phone.value;
+    
     saveforamtions();
     cleareforma();
 });
