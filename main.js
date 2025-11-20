@@ -30,15 +30,15 @@ btnOne.addEventListener('click' , function(){
 
 function saveforamtions(){
     
-    user={
-        fullname : inputName.value ,
-        email : inputEmail.value,
-        photo : inputPhoto.value,
-        phone : inputphone.value,
-        roles : choiceRoles.value,
-        dateone : inputDateOne.value,
-        datetwo : inputdateTwo.value,
-        company : inputcompany.value
+    let user={
+        fullName : fullName.value ,
+        email : email.value,
+        photo : Photo.value,
+        phone : phone.value,
+        roles : roles.value,
+        dateOne : dateOne.value,
+        dateTwo : dateTwo.value,
+        company : company.value
 
     };
 
@@ -46,3 +46,22 @@ function saveforamtions(){
     alert("Data saved successfully!");
 }
 
+function loadData() {
+    const saved = localStorage.getItem("userData");
+    if (!saved) return;
+
+    const data = JSON.parse(saved);
+
+    fullName.value = data.fullName || "";
+    email.value = data.email || "";
+    Photo.value = data.photo || "";
+    phone.value = data.phone || "";
+    roles.value = data.roles || "manager";
+    dateOne.value = data.dateOne || "";
+    dateTwo.value = data.dateTwo || "";
+    company.value = data.company || "";
+}
+
+loadData();
+
+btnTree.addEventListener("click", saveforamtions);
