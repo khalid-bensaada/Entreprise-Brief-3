@@ -60,6 +60,16 @@ btnAdd.addEventListener("click", function () {
 
 //
 closeForm.addEventListener('click', function(){
+  fullName.value = "";
+  email.value = "";
+  phone.value = "";
+  photo.value = "";
+  role.value = "";
+  expCompany.value = "";
+  expRole.value = "";
+  expStart.value = "";
+  expEnd.value = "";
+
   Form.classList.add("hidden");
 })
 
@@ -72,7 +82,7 @@ saveWorker.addEventListener('click',function(){
     return;
 
   }
-
+  
   // na5d experiences wnkopihom hna
   let copiedExperiences = [];
   for (let i = 0; i < experiences.length; i++) {
@@ -94,5 +104,5 @@ saveWorker.addEventListener('click',function(){
   workers.push(worker);
 
   experiences = [];
-  
+
 })
