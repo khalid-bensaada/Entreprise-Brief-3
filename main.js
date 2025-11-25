@@ -53,10 +53,46 @@ let workers = JSON.parse(localStorage.getItem("workers")) || [];
 //array ta3 exeperiences
 let experiences = [];
 
-// ila clicka 3la 
+// ila clicka 3la add worker tla3 lih formula
 btnAdd.addEventListener("click", function () {
   Form.classList.remove("hidden");
 });
 
-// 
+//
+closeForm.addEventListener('click', function(){
+  Form.classList.add("hidden");
+})
 
+// ila clicka 3la save worker ytseva lworker walakin bichorot
+saveWorker.addEventListener('click',function(){
+
+  //chorot
+  if (fullName.value === "" || email.value === "" || photo.value=== "" ){
+    alert("Enter all formations");
+    return;
+
+  }
+
+  // na5d experiences wnkopihom hna
+  let copiedExperiences = [];
+  for (let i = 0; i < experiences.length; i++) {
+    copiedExperiences.push(experiences[i]);
+  }
+
+  // object n5asn fih values
+  let worker = {
+    id: Date.now(),
+    name: fullName.value,
+    email: email.value,
+    phone: phone.value,
+    photo: photo.value,
+    role: role.value,
+    experiences: copiedExp,
+    room: null
+  };
+
+  workers.push(worker);
+
+  experiences = [];
+  
+})
