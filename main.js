@@ -1,74 +1,62 @@
-const btnOne = document.getElementById("btnOne");
-const btnTwo = document.getElementById("btnTwo");
-const btnTree = document.getElementById("btnTree");
-const forma = document.getElementById("forma");
-const experiences = document.getElementById("exper");
-const image = document.getElementById("image"); 
-const roomOne = document.getElementById("roomOne");
-const roomTwo = document.getElementById("roomTwo");
-const roomTree = document.getElementById("roomTree");
-const kolwar = document.getElementById("kolwar");
-const roomFor = document.getElementById("roomFor");
-const roomFive = document.getElementById("roomFive");
-const roomsx = document.getElementById("roomsx");
+// variables ta3 les button li 3ndi
+const btnAdd = document.getElementById("btnAdd");
+const Form = document.getElementById("Form");
+const saveWorker = document.getElementById("saveWorker");
+const closeForm = document.getElementById("closeForm");
+
+// variables ta3 les inputes li yda5l worker 
 const fullName = document.getElementById("fullName");
 const email = document.getElementById("email");
-const Photo = document.getElementById("Photo");
 const phone = document.getElementById("phone");
-const roles = document.getElementById("roles");
-const dateOne = document.getElementById("dateOne");
-const dateTwo = document.getElementById("dateTwo");
-const oldcompany = document.getElementById("company");
+const photo = document.getElementById("photo");
+const role = document.getElementById("role");
 
+// variables les exeperience li 3nd worker
+const expCompany = document.getElementById("expCompany");
+const expRole = document.getElementById("expRole");
+const expStart = document.getElementById("expStart");
+const expEnd = document.getElementById("expEnd");
+const addExp = document.getElementById("addExp");
+const experienceList = document.getElementById("experienceList");
 
-let personnes = [];
+// variables bax n5tar worker
+const popupSelect = document.getElementById("popupSelect");
+const popupList = document.getElementById("popupList");
+const closePopup = document.getElementById("closePopup");
 
-btnOne.addEventListener('click' , function(){
-    forma.classList.toggle("hidden")
+// variables les donnees ta3 worker
+const profile = document.getElementById("profile");
+const profileName = document.getElementById("profileName");
+const profilePhoto = document.getElementById("profilePhoto");
+const profileRole = document.getElementById("profileRole");
+const profileEmail = document.getElementById("profileEmail");
+const profilePhone = document.getElementById("profilePhone");
+const profileExperiences = document.getElementById("profileExperiences");
+const closeProfile = document.getElementById("closeProfile");
+
+//variable ta3 list dyal worker fi set 
+const workerSpace = document.getElementById("workerSpace");
+
+// object for the rooms i have 
+const rooms = {
+  roomOne: document.getElementById("roomOne"),
+  roomTwo: document.getElementById("roomTwo"),
+  roomTree: document.getElementById("roomTree"),
+  roomFor: document.getElementById("roomFor"),
+  roomFive: document.getElementById("roomFive"),
+  roomsx: document.getElementById("roomsx")
+};
+
+// localStorage ta3 worker
+let workers = JSON.parse(localStorage.getItem("workers")) || [];
+
+//array ta3 exeperiences
+let experiences = [];
+
+// ila clicka 3la 
+btnAdd.addEventListener("click", function () {
+  Form.classList.remove("hidden");
 });
 
-
-function saveforamtions(){
-    
-    let user={
-        fullName : fullName.value ,
-        email : email.value,
-        photo : Photo.value,
-        phone : phone.value,
-        roles : roles.value,
-        dateOne : dateOne.value,
-        dateTwo : dateTwo.value,
-        company : oldcompany.value
-
-    };
-
-    localStorage.setItem("userData", JSON.stringify(user));
-    alert("Data saved successfully!");
-    cleareforma();
-}
-
-const formations = { fullName ,email ,Photo ,phone ,roles ,dateOne ,dateTwo ,oldcompany};
-
-
-function cleareforma(){
-
-    fullName.value ="";
-    email.value ="";
-    Photo.value ="";
-    phone.value ="";
-    roles.value ="";
-    dateOne.value ="";
-    dateTwo.value ="";
-    oldcompany.value ="";
-
-}
-btnTree.addEventListener("click",() =>{
-    const nome = fullName.value.tirm();
-    const mail = email.value;
-    const picture = Photo.value;
-    const number = phone.value;
-    
-    saveforamtions();
-    cleareforma();
-});
+// 
 
