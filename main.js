@@ -106,6 +106,7 @@ addExp.addEventListener("click", function () {
   renderExperienceList();
 });
 
+// kanbyn les experiences fi page 
 function renderExperienceList() {
   experienceList.innerHTML = "";
 
@@ -160,4 +161,9 @@ function renderExperienceList() {
     experienceList.appendChild(div);
   });
 }
+// mat7taj comment 
+function saveData() {
+  localStorage.setItem("workers", JSON.stringify(workers));
+}
 
+//
