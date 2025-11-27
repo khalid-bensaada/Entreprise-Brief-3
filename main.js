@@ -225,3 +225,8 @@ function openProfile(id) {
   profile.classList.remove("hidden");
 }
 
+closeProfile.addEventListener("click", function () {
+  profile.classList.add("hidden");
+});
+
+// 
