@@ -166,4 +166,32 @@ function saveData() {
   localStorage.setItem("workers", JSON.stringify(workers));
 }
 
-//
+//nbyn lworkers li ma3ndhomx room
+function renderWorkers() {
+  workerSpace.innerHTML = "";
+
+  for (let i = 0; i < workers.length; i++) {
+    let worker = workers[i];
+
+    if (worker.room === null) {
+      let div = document.createElement("div");
+      div.className =
+        "flex items-center gap-2 bg-white p-2 rounded cursor-pointer hover:bg-blue-100";
+
+      div.innerHTML =
+        '<img src="' +
+        worker.photo +
+        '" class="w-10 h-10 rounded-full object-cover">' +
+        "<span>" +
+        worker.name +
+        "</span>";
+
+      div.addEventListener("click", function () {
+        openProfile(worker.id);
+      });
+
+      workerSpace.appendChild(div);
+    }
+  }
+}
+
