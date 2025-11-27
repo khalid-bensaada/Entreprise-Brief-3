@@ -298,3 +298,60 @@ function renderRooms() {
   }
 }
 
+let addBtns = document.querySelectorAll(".addBtn");
+
+for (let i = 0; i < addBtns.length; i++) {
+  addBtns[i].addEventListener("click", function (e) {
+    let roomDiv = e.target.closest("div");
+    let roomId = roomDiv.id;
+
+    popupList.innerHTML = "";
+
+    for (let j = 0; j < workers.length; j++) {
+      let w = workers[j];
+
+      if (w.room === null && checkRoleRoom(w.role, roomId)) {
+        let p = document.createElement("p");
+        p.className = "cursor-pointer hover:bg-gray-200 p-1";
+        p.textContent = w.name;
+
+        p.addEventListener("click", function () {
+          w.room = roomId;
+          saveData();
+          renderWorkers();
+          renderRooms();
+          popupSelect.classList.add("hidden");
+        });
+
+        popupList.appendChild(p);
+      }
+    }
+
+    popupSelect.classList.remove("hidden");
+  });
+}
+
+closePopup.addEventListener("click", function () {
+  popupSelect.classList.add("hidden");
+});
+
+function checkRoleRoom(role, roomId) {
+  if (roomId === "roomTwo" && role !== "receptionist") return false;
+  if (roomId === "roomsx" && role !== "IT") return false;
+  if (roomId === "roomTree" && role !== "security") return false;
+  if (role === "cleaning" && roomId === "roomFor") return false;
+  return true;
+}
+
+function clearForm() {
+  fullName.value = "";
+  email.value = "";
+  phone.value = "";
+  photo.value = "";
+  role.value = "manager";
+  experiences = [];
+  renderExperienceList();
+}
+
+renderWorkers();
+renderRooms();
