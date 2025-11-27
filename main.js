@@ -195,3 +195,33 @@ function renderWorkers() {
   }
 }
 
+// nbyn lanfo dyal worker
+function openProfile(id) {
+  let worker = null;
+
+  for (let i = 0; i < workers.length; i++) {
+    if (workers[i].id === id) {
+      worker = workers[i];
+      break;
+    }
+  }
+
+  if (!worker) return;
+
+  profileName.textContent = worker.name;
+  profilePhoto.src = worker.photo;
+  profileRole.textContent = worker.role;
+  profileEmail.textContent = worker.email;
+  profilePhone.textContent = worker.phone;
+
+  profileExperiences.innerHTML = "";
+  for (let i = 0; i < worker.experiences.length; i++) {
+    let e = worker.experiences[i];
+    let p = document.createElement("p");
+    p.textContent = e.role + " at " + e.company + " (" + e.start + " - " + e.end + ")";
+    profileExperiences.appendChild(p);
+  }
+
+  profile.classList.remove("hidden");
+}
+
