@@ -229,4 +229,72 @@ closeProfile.addEventListener("click", function () {
   profile.classList.add("hidden");
 });
 
-// 
+// nbyn workers fi rooms
+function renderRooms() {
+  let r = Object.values(rooms);
+  for (let x = 0; x < r.length; x++) {
+    let room = r[x];
+    let cards = room.querySelectorAll(".workerCard");
+    for (let c = 0; c < cards.length; c++) {
+      cards[c].remove();
+    }
+  }
+
+  for (let i = 0; i < workers.length; i++) {
+    let worker = workers[i];
+
+    if (worker.room !== null) {
+      let roomDiv = rooms[worker.room];
+
+      let div = document.createElement("div");
+      div.className =
+        "workerCard flex items-center gap-2 bg-green-200 p-1 rounded mt-1 cursor-pointer";
+
+      div.innerHTML =
+        '<img src="' +
+        worker.photo +
+        '" class="w-8 h-8 rounded-full object-cover">' +
+        "<span>" +
+        worker.name +
+        "</span>" +
+        '<button class="bg-red-500 text-white px-1 rounded">X</button>';
+
+      div.querySelector("button").addEventListener("click", function () {
+        worker.room = null;
+        saveData();
+        renderWorkers();
+        renderRooms();
+      });
+
+      div.addEventListener("click", function () {
+        openProfile(worker.id);
+      });
+
+      roomDiv.appendChild(div);
+    }
+  }
+
+  let entries = Object.entries(rooms);
+
+  for (let i = 0; i < entries.length; i++) {
+    let key = entries[i][0];
+    let room = entries[i][1];
+
+    let count = 0;
+
+    for (let j = 0; j < workers.length; j++) {
+      if (workers[j].room === key) {
+        count++;
+      }
+    }
+
+    let empty = count === 0;
+
+    if (empty && key !== "roomOne" && key !== "roomFive") {
+      room.style.backgroundColor = "#ffcccc";
+    } else {
+      room.style.backgroundColor = "white";
+    }
+  }
+}
+
